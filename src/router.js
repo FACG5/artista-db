@@ -1,5 +1,6 @@
 const {
-  handleHomePage, handlePainters, handleCategories, handleStaticFiles, handleError, handleQuery, handleAddPainting,
+  handleHomePage, handlePainters, handleCategories,
+  handleStaticFiles, handleError, handleQuery, handleAddPainting,
 } = require('./handler');
 
 const router = (req, res) => {
