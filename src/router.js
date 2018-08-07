@@ -4,7 +4,9 @@ const {
 
 const router = (req, res) => {
   const endpoint = req.url;
-  if (endpoint === '/') {
+  console.log('endpoint',endpoint);
+  if (endpoint == '/') {
+    console.log('andari');
     handleHomePage(req, res);
   } else if (endpoint === '/painters') {
     handlePainters(req, res);
@@ -17,6 +19,7 @@ const router = (req, res) => {
   } else if (endpoint.includes('public')) {
     handleStaticFiles(req, res);
   } else {
+    // handleHomePage(req, res);
     handleError(req, res);
   }
 };
