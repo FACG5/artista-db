@@ -2,9 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 function handleHomePage(req, res) {
+  res.writeHead(200, { 'content-type': 'text/html' });
   fs.readFile(path.join(__dirname, '..', 'public', 'index.html'), (err, data) => {
     if (err) {
-      console.error(err);
+      res.end(err.message);
     }
     res.end(data);
   });
@@ -27,18 +28,18 @@ function handleStaticFiles(req, res) {
   });
   fs.readFile(path.join(__dirname, '..', endponit), (err, file) => {
     if (err) {
-      console.error(err);
+      res.end(err.message);
     } else {
       res.end(file);
     }
   });
 }
 
-function handelError(req, res) {
+function handelNotFoundPage(req, res) {
   res.writeHead(404, { 'content-type': 'text/html' });
-  fs.readFile(path.join(__dirname, '..', 'public', 'error.html'), (err, data) => {
+  fs.readFile(path.join(__dirname, '..', 'public', 'error404.html'), (err, data) => {
     if (err) {
-      console.error(err);
+      res.end(err.message);
     }
     res.end(data);
   });
@@ -48,7 +49,7 @@ function handelError(req, res) {
 function handlePainters(req, res) {
   fs.readFile(path.join(__dirname, '..', 'public', '', 'index.html'), (err, data) => {
     if (err) {
-      console.error(err);
+      res.end(err.message);
     }
     res.end(data);
   });
@@ -61,5 +62,5 @@ function handleAddPainting(req, res) {
 }
 
 module.exports = {
-  handleHomePage, handlePainters, handleAddPainting, handelError, handleStaticFiles,
+  handleHomePage, handlePainters, handleAddPainting, handelNotFoundPage, handleStaticFiles,
 };
