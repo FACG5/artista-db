@@ -35,7 +35,7 @@ INSERT INTO painters (painter_name,img,cat_id) VALUES
     paint_description TEXT,
     img VARCHAR, 
     cat_id INTEGER REFERENCES categories(cat_id),
-    painter_id INTEGER REFERENCES p`ainters(painter_id)
+    painter_id INTEGER REFERENCES painters(painter_id)
 
 );
 
