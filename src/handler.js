@@ -1,6 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
+function handleHomePage(req, res) {
+  fs.readFile(path.join(__dirname, '..', 'public', 'index.html'), (err, data) => {
+    if (err) {
+      console.error(err);
+    }
+    res.end(data);
+  });
+}
 
 function handleStaticFiles(req, res) {
   const endponit = req.url;
@@ -26,12 +34,32 @@ function handleStaticFiles(req, res) {
   });
 }
 
-
-function handelError(res) {
+function handelError(req, res) {
   res.writeHead(404, { 'content-type': 'text/html' });
-  res.end('<h1>404</h1>');
+  fs.readFile(path.join(__dirname, '..', 'public', 'error.html'), (err, data) => {
+    if (err) {
+      console.error(err);
+    }
+    res.end(data);
+  });
+}
+
+
+function handlePainters(req, res) {
+  fs.readFile(path.join(__dirname, '..', 'public', '', 'index.html'), (err, data) => {
+    if (err) {
+      console.error(err);
+    }
+    res.end(data);
+  });
+}
+
+function handleAddPainting(req, res) {
+  fs.readFile(path(''), (err, data) => {
+    res.end(data);
+  });
 }
 
 module.exports = {
-  handelError, handleStaticFiles,
+  handleHomePage, handlePainters, handleAddPainting, handelError, handleStaticFiles,
 };
