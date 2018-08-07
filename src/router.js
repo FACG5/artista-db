@@ -4,9 +4,9 @@ const {
 
 const router = (req, res) => {
   const endpoint = req.url;
-  console.log('endpoint',endpoint);
-  if (endpoint == '/') {
-    console.log('andae')
+  console.log('endpoint', endpoint);
+  if (endpoint === '/') {
+    console.log('andae');
     handleHomePage(req, res);
   } else if (endpoint === '/painters') {
     handlePainters(req, res);

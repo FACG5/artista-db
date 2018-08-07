@@ -11,10 +11,10 @@ function handleHomePage(req, res) {
 }
 
 function handlePainters(req, res) {
-  fs.readFile(path.join(__dirname, '..', 'public', '','index.html'), (err, data) => {
+  fs.readFile(path.join(__dirname, '..', 'html', 'painters', 'painters.html'), (err, data) => {
     if (err) {
 			
-    }
+		}
     res.end(data);
   });
 }
