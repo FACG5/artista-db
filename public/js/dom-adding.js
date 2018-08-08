@@ -1,19 +1,13 @@
+fetch(null, 'get', '/getdata?data=painters', renderOption);
 
-const getName = document.getElementById('form');
-// const addName = getName.value;
-
-// getName.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   console.log('kkkkkkkkk', e.target.firstElementChild.value);
-//   const addName = e.target.firstElementChild.value;
-//   console.log()
-//   const data = JSON.stringify(addName);
-
-//   fetch(data, 'POST', '/add', (err, res) => {
-//       if (err) {
-//           console.log(err);
-//       }else 
-//       console.log(res);
-      
-//   });
-// });
+function renderOption(err, data) {
+  const obj = JSON.parse(data);
+  if (obj.err);
+  const opations = document.getElementsByClassName('options')[0];
+  obj.data.forEach((element) => {
+		const opation = document.createElement('option');
+		opation.value = element.painter_id;
+		opation.textContent = element.painter_name;
+		opations.appendChild(opation);
+  });
+}

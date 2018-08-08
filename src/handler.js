@@ -7,11 +7,6 @@ const { getPainting, getPainters } = require('./queries/getData');
 const addPaintings = require('./queries/addData');
 const deleteData = require('./queries/deleteData');
 
-// to do delete categories
-// handle delete paindgi
-// we delete categories from sql build and schema
-// the pic need to be small
-
 function handleHomePage(req, res) {
   fs.readFile(path.join(__dirname, '..', 'public', 'index.html'), (err, data) => {
     if (err) {
@@ -71,12 +66,9 @@ function handleAdd(req, res) {
     data += chunk;
   });
   req.on('end', () => {
-    // const result = JSON.parse(data);
-    console.log(data);
-    res.writeHead(302, { Location: '/' });
     const obj = queryString.parse(data);
     console.log(obj);
-    
+    res.writeHead(302, { Location: '/' });
     // console.log(result);
     addPaintings(obj, (err, resDatabase) => {
       if (err) {
@@ -99,27 +91,8 @@ function handlePageNotFound(req, res) {
   });
 }
 
-const handleQueryCb = (err, data) => (cb) => {
-  const obj = {
-    err,
-    data,
-  };
-  cb(obj);
-};
-
 function handleQuery(req, res) {
   const { query } = url.parse(req.url, true);
-  console.log(url);
-  /*
-  if (query.data === 'painters') {
-    getPainting(handleQueryCb(x=>console.log(x)));
-  } else if (query.data === 'painter') {
-    getPainters(handleQueryCb(obj => res.end(JSON.stringify(obj))));
-  } else {
-    // change this to json
-    res.end('sory we dont have that json');
-  }
-  */
   if (query.data === 'painters') {
     getPainters((err, data) => {
       const obj = {
