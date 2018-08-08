@@ -1,8 +1,7 @@
-# artista-db
+# Artista-db
 
-### **[artista-db Link]()**
+### **[artista-db Link](https://artista-db.herokuapp.com/)**
 
-# **artista-db**
 ## **Why**
 
 * To learn how to make a database and connect it with the backend.
