@@ -14,11 +14,13 @@ function buildPaintersDom(errfetch, data) {
         name.classList = 'title';
         const primg= document.createElement("img");
         primg.classList = 'img';
+        const line = document.createElement('hr');
         name.textContent = element.painter_name;
         primg.src=element.img;
         prdev.appendChild(name);
         prdev.appendChild(primg);
         Container.appendChild(prdev);
+        Container.appendChild(line);
 
       })
 
