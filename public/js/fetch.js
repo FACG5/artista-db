@@ -2,14 +2,11 @@ const fetch = (data, method, url, cb) => {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState === 4) {
-      const obj = JSON.parse(xhr.responseText);
-      if (obj.err) {
-        cb(new TypeError(obj.err));
+      if (xhr.status === 200) {
+        cb(null, xhr.responseText);
       } else {
-        cb(null, JSON.parse(obj.result));
+        cb(xhr.responseType);
       }
-    } else {
-      cb(new TypeError(obj.err));
     }
   };
   xhr.open(method, url);

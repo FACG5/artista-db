@@ -1,6 +1,6 @@
 const {
   handleHomePage, handlePainters,
-  handleStaticFiles, handleError, handleQuery, handleAddPainting,
+  handleStaticFiles, handlePageNotFound, handleQuery, handleAddPainting, handleAdd,
 } = require('./handler');
 
 const router = (req, res) => {
@@ -15,8 +15,10 @@ const router = (req, res) => {
     handleQuery(req, res);
   } else if (endpoint.includes('/public')) {
     handleStaticFiles(req, res);
+  } else if (endpoint === '/add') {
+    handleAdd(req, res);
   } else {
-    handleError(req, res);
+    handlePageNotFound(req, res);
   }
 };
 module.exports = router;
