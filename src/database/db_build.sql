@@ -13,7 +13,7 @@ INSERT INTO painters (painter_name,img) VALUES
 ('Francisco de Goya' , 'https://upload.wikimedia.org/wikipedia/commons/b/bf/Vicente_L%C3%B3pez_Porta%C3%B1a_-_el_pintor_Francisco_de_Goya.jpg'),
 ('Salvador Dalí' , 'https://upload.wikimedia.org/wikipedia/commons/2/27/Salvador_Dali_NYWTS.jpg'),
 ('Pablo Picasso' , 'https://jamesclear.com/wp-content/uploads/2016/08/pablo-picasso-by-gilles-ehrmann-1952.jpg'),
-('Yves Tanguy','yvespic'),
+('Yves Tanguy', 'https://www.marefa.org/images/9/95/Shamoot1.jpg'),
 ('Jean-Leon Gerome','https://upload.wikimedia.org/wikipedia/commons/2/2c/Jean-L%C3%A9on_G%C3%A9r%C3%B4me_by_Nadar.jpg'),
 ('Ismail Shammout','https://www.marefa.org/images/9/95/Shamoot1.jpg'),
 ('Sami Mohammed','https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Sami_Mohammad.jpg/600px-Sami_Mohammad.jpg');

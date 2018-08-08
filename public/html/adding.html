@@ -1,1 +1,27 @@
 <h1>adding</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add User</title>
+</head>
+<body>
+
+    <form id="form" action="/add" method="POST">
+        <input id="name" type="text" name="paint_name" placeholder="enter panting name">
+        <input type="text" name="img" placeholder="enter panting name">
+        <input type="text" name="paint_description" placeholder="enter panting name">
+        <select name="painter_id">
+            <option value="1">a</option>
+            <option value="2">b</option>
+            <option value="3">c</option>
+        </select>
+        <button type="submit">add</button>
+    </form>
+    <script src="../public/js/fetch.js"></script>
+    <script src="../public/js/dom-adding.js"></script>
+</body>
+</html>
