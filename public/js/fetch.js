@@ -1,0 +1,14 @@
+const fetch = (value, method, url, cb)=> {
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = () =>{
+    if (xhr.readyState == 4) {
+      if (xhr.status == 200) {
+        cb(null, xhr.responseText);
+      } else {
+        cb(xhr.responseType);
+      }
+    };
+  }
+  xhr.open(method,url,true);
+  xhr.send(value);
+}
