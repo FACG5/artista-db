@@ -5,13 +5,11 @@ const {
 
 const router = (req, res) => {
   const endpoint = req.url;
-  console.log(endpoint);
-  
   if (endpoint === '/') {
     handleHomePage(req, res);
   } else if (endpoint === '/painters') {
     handlePainters(req, res);
-  } else if (endpoint === '/addPainting') {
+  } else if (endpoint === '/addpainting') {
     handleAddPainting(req, res);
   } else if (endpoint.includes('/getData')) {
     handleQuery(req, res);
