@@ -1,5 +1,5 @@
 const {
-  handleHomePage, handlePainters,
+  handleHomePage, handlePainters, handleDelete,
   handleStaticFiles, handlePageNotFound, handleQuery, handleAddPainting, handleAdd,
 } = require('./handler');
 
@@ -11,14 +11,17 @@ const router = (req, res) => {
     handlePainters(req, res);
   } else if (endpoint === '/addpainting') {
     handleAddPainting(req, res);
-  } else if (endpoint.includes('/getData')) {
+  } else if (endpoint.includes('/getdata')) {
     handleQuery(req, res);
   } else if (endpoint.includes('/public')) {
     handleStaticFiles(req, res);
   } else if (endpoint === '/add') {
     handleAdd(req, res);
+  } else if (endpoint === '/deletedata') {
+    handleDelete(req, res);
   } else {
     handlePageNotFound(req, res);
   }
 };
+
 module.exports = router;
