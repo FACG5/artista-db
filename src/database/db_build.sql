@@ -1,9 +1,7 @@
 
 BEGIN;
 
-DROP TABLE IF EXISTS categories CASCADE;
-DROP TABLE IF EXISTS painters CASCADE;
-DROP TABLE IF EXISTS paintings CASCADE;
+DROP TABLE IF EXISTS categories, painters, paintings CASCADE;
 
 CREATE TABLE categories (
     cat_id SERIAL PRIMARY KEY,

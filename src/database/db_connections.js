@@ -1,14 +1,12 @@
-const pg = require ('pg');
-require ('env2')('./config.env');
+const pg = require('pg');
+require('env2')('./config.env');
 const url = require('url');
 
 
 if (!process.env.DB_URL) throw new Error ('DB_URL MISSING');
 
-const params = url .parse(process.env.DB_URL);
-const [username, password]=params.auth.split(':');
-
-
+const params = url.parse(process.env.DB_URL);
+const [username, password] = params.auth.split(':');
 
 const options = {
     password,
