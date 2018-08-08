@@ -12,13 +12,10 @@ function render(data) {
     desc.classList = 'desc';
     const owner = document.createElement('h3');
     owner.classList = 'owner';
-    const cat = document.createElement('h4');
-    cat.classList = 'cat';
     const remove = document.createElement('span');
 		remove.classList = 'fas fa-trash';
 		//APPEND CHILDS
 		view.appendChild(remove);
-		view.appendChild(cat);
 		view.appendChild(owner);
 		view.appendChild(desc);
 		view.appendChild(img);
