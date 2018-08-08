@@ -61,6 +61,7 @@ function handleAddPainting(req, res) {
     if (err) {
       res.end(JSON.stringify(err));
     }
+    res.end(data);
   });
 }
 
