@@ -5,7 +5,7 @@ const {
 
 const router = (req, res) => {
   const endpoint = req.url;
-  console.log(endpoint)
+  console.log(endpoint);
   if (endpoint === '/') {
     handleHomePage(req, res);
   } else if (endpoint === '/painters') {
