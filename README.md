@@ -1,4 +1,4 @@
-# artista-db
+# Artista-db
 
 ### **[artista-db Link](https://artista-db.herokuapp.com/)**
 
