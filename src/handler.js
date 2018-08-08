@@ -66,12 +66,9 @@ function handleAdd(req, res) {
     data += chunk;
   });
   req.on('end', () => {
-    // const result = JSON.parse(data);
-    console.log(data);
-    res.writeHead(302, { Location: '/' });
     const obj = queryString.parse(data);
     console.log(obj);
-    
+    res.writeHead(302, { Location: '/' });
     // console.log(result);
     addPaintings(obj, (err, resDatabase) => {
       if (err) {
