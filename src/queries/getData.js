@@ -10,9 +10,8 @@ const getPainting = (cb) => {
   });
 };
 
-
 const getPainters = (cb) => {
-  dbConnection.query('select painters.painter_name , painters.img from painters;', (err, res) => {
+  dbConnection.query('select * from painters;', (err, res) => {
     if (err) {
       cb(err);
     } else {
