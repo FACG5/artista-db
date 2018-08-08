@@ -5,6 +5,7 @@ const {
 
 const router = (req, res) => {
   const endpoint = req.url;
+  console.log(endpoint)
   if (endpoint === '/') {
     handleHomePage(req, res);
   } else if (endpoint === '/painters') {
@@ -17,7 +18,7 @@ const router = (req, res) => {
     handleStaticFiles(req, res);
   } else if (endpoint === '/add') {
     handleAdd(req, res);
-  } else if (endpoint === '/deletedata') {
+  } else if (endpoint.includes('/deletedata')) {
     handleDelete(req, res);
   } else {
     handlePageNotFound(req, res);

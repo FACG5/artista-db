@@ -109,6 +109,7 @@ const handleQueryCb = (err, data) => (cb) => {
 
 function handleQuery(req, res) {
   const { query } = url.parse(req.url, true);
+  console.log(url);
   /*
   if (query.data === 'painters') {
     getPainting(handleQueryCb(x=>console.log(x)));
@@ -146,6 +147,7 @@ function handleQuery(req, res) {
     res.end('sory we dont have that json');
   }
 }
+
 function handleDelete(req, res) {
   const id = req.url.split('?')[1];
   deleteData(id, (err, result) => {
