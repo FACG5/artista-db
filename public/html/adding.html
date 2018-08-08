@@ -1,27 +1,55 @@
-<h1>adding</h1>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="keywords" content="personal, vcard, portfolio">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Add User</title>
-</head>
-<body>
+        <link rel="stylesheet" href="../public/css/style.css" />
+        <link rel="stylesheet" href="../public/css/adding.css" />
+        <link rel="stylesheet" href="../public/css/media.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+        <title>Add Paintings</title>
+    </head>
+    <body>
+            <header>
+                    <div class="add-section">
+                        <a href="/addpainting">add new</a>
+                    </div>
+                    <div class="logo-section">
+                       <a href="/"> <img  class="logo" src="../public/img/artista.jpg" alt="Artista Logo"></a>
+                    </div>
+                    <div class="view-section">
+                        <ul class="mainul">
+                            <li class="services oli"><a href="#">artista view<span class="fas fa-caret-down"></span></a>
+                                <ul class="dropdown">
+                                    <li class="ili"><a href="/">paintings</a></li>
+                                    <li class="ili"><a href="/painters">painters</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </header>
 
-    <form id="form" action="/add" method="POST">
-        <input id="name" type="text" name="paint_name" placeholder="enter panting name">
-        <input type="text" name="img" placeholder="enter panting name">
-        <input type="text" name="paint_description" placeholder="enter panting name">
-        <select name="painter_id">
-            <option value="1">a</option>
-            <option value="2">b</option>
-            <option value="3">c</option>
-        </select>
-        <button type="submit">add</button>
-    </form>
-    <script src="../public/js/fetch.js"></script>
-    <script src="../public/js/dom-adding.js"></script>
-</body>
+        <main class="addSection">
+             <form class="form" id="form" action="/add" method="POST">
+                <input class ="input name" id="name" type="text" name="paint_name" placeholder="enter painting name">
+                <input class ="input img"  type="text" name="img" placeholder="enter painting img url">
+                <textarea class ="input desc"  rows="7" cols="50" name="paint_description" placeholder="enter paintings description ..."></textarea>
+                <select class="options" name="painter_id">
+                    <option value="1">a</option>
+                    <option value="2">b</option>
+                    <option value="3">c</option>
+                </select>
+                <button class="btn-add" type="submit">add</button>
+             </form>
+        </main>
+        <footer>
+                <address>all right reserve to <span>artista team</span> &copy; 2018 </address>
+        </footer>
+        <script src="../public/js/fetch.js"></script>
+        <script src="../public/js/dom-adding.js"></script>
+    </body>
 </html>
+       
+
