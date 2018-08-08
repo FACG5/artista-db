@@ -7,7 +7,6 @@ if (!process.env.DB_URL) throw new Error('DB_URL MISSING');
 const params = url.parse(process.env.DB_URL);
 const [username, password] = params.auth.split(':');
 
-
 const options = {
   password,
   user: username,

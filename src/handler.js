@@ -1,18 +1,19 @@
 const fs = require('fs');
 const path = require('path');
-const queryString = require('querystring');
-const getPainters = require('./queries/getPainters.js');
-const postPainting = require('./queries/postPainting.js');
+// const queryString = require('querystring');
+const url = require('url');
+const { getPainting, getPainters } = require('./queries/getData');
+const { addPaintings } = require('./queries/addData');
 
-function serverError(req, res) {
-  res.writeHead(500, 'content-type:text/html');
-  res.end('<h1>internal server error</h1>');
-}
+// to do delete categories
+// handle delete paindgi
+// we delete categories from sql build and schema
+// the pic need to be small
 
 function handleHomePage(req, res) {
   fs.readFile(path.join(__dirname, '..', 'public', 'index.html'), (err, data) => {
     if (err) {
-      serverError(req, res);
+      res.end(JSON.stringify(err));
     }
     res.writeHead(200, { 'content-type': 'text/html' });
     res.end(data);
@@ -30,6 +31,7 @@ function handleStaticFiles(req, res) {
     jpg: 'image/jpg',
     png: 'image/png',
     gif: 'image/gif',
+    jpeg: 'image/jpeg',
   };
   res.writeHead(200, {
     'content-type': contentType[extention],
@@ -43,51 +45,89 @@ function handleStaticFiles(req, res) {
   });
 }
 
-function handelNotFoundPage(req, res) {
-  res.writeHead(404, { 'content-type': 'text/html' });
-  fs.readFile(path.join(__dirname, '..', 'public', 'error404.html'), (err, data) => {
+function handlePainters(req, res) {
+  fs.readFile(path.join(__dirname, '..', 'public', 'html', 'painters.html'), (err, data) => {
     if (err) {
-      res.end(err.message);
+      res.end(JSON.stringify(err));
     }
     res.end(data);
   });
 }
 
-
-function handlePainters(req, res) {
-  // fs.readFile(path.join(__dirname, '..', 'public', '', 'index.html'), (err, data) => {
-  //   if (err) {
-  //     res.end(err.message);
-  //   }
-  //   res.end(data);
-  // });
-  getPainters((err, response) => {
+function handleAddPainting(req, res) {
+  fs.readFile(path.join(__dirname, '..', 'public', 'html', 'adding.html'), (err, data) => {
     if (err) {
-      serverError(req, res);
-    } else {
-      const result = JSON.stringify(response);
-      res.writeHead(200, { 'content-type': 'application/json' });
-      res.end(result);
+      res.end(JSON.stringify(err));
     }
   });
 }
 
-function handleAddPainting(req, res) {
-  // let data = '';
-  // req.on('data', function (chunk){
-  //   data += cheunk;
-  // });
-  // req.on('end', () => {
-  //   const paint_name = queryString.parse(data).paint_name;
-  //   const paint_description = queryString.parse(data).paint_description;
-  //   const img_url = queryString.parse(data).img_url;
-  //   postPainting(paint_name, paint_description, img_url, (err, res)) => {
-  //     if (err) {
-  //       serverError(req, res);
-  //     }
-  //   }
-  // });
-  
+function handleAdd(req, res) {
+  let data = '';
+  req.on('data', (chunk) => {
+    data += chunk;
+  });
+  req.on('end', () => {
+    const result = JSON.parse(data);
+    addPaintings(paint_name, paint_description, img, (err, res) => {
+      if (err) {
+        res.end(JSON.stringify(err));
+      }
+      res.end(result);
+    });
+  });
+}
+
+function handleError(req, res) {
+  res.writeHead(404, { 'content-type': 'text/html' });
+  fs.readFile(path.join(__dirname, '..', 'public', 'error.html'), (err, data) => {
+    if (err) {
+      res.end(JSON.stringify(err));
+    }
+    res.end(data);
+  });
+}
+
+const handleQueryCb = (err, data) => (cb) => {
+  const obj = {
+    err,
+    data,
+  };
+  cb(obj);
+};
+
+function handleQuery(req, res) {
+  const { query } = url.parse(req.url, true);
+  /*
+  if (query.data === 'painters') {
+    getPainting(handleQueryCb(x=>console.log(x)));
+  } else if (query.data === 'painter') {
+    getPainters(handleQueryCb(obj => res.end(JSON.stringify(obj))));
+  } else {
+    // change this to json
+    res.end('sory we dont have that json');
+  }
+  */
+  if (query.data === 'painters') {
+    getPainters((err, data) => {
+      const obj = {
+        err,
+        data,
+      };
+      res.end(JSON.stringify(obj));
+    });
+  } else if (query.data === 'painting') {
+    getPainting((err, data) => {
+      const obj = {
+        err,
+        data,
+      };
+      res.end(JSON.stringify(obj));
+    });
+  } else {
+    // change this to json
+    res.end('sory we dont have that json');
+  }
 }
 
 
@@ -95,7 +135,8 @@ module.exports = {
   handleHomePage,
   handlePainters,
   handleAddPainting,
-  handelNotFoundPage,
+  handleError,
   handleStaticFiles,
-  serverError,
+  handleQuery,
+  handleAdd,
 };

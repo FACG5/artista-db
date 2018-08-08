@@ -1,10 +1,10 @@
 const fs = require('fs');
+const path = require('path');
+const dbConnection = require('./db_connections');
 
-const dbConnection = require('./db_connections.js');
+const sql = fs.readFileSync(path.join(__dirname, 'db_build.sql')).toString();
 
-const sql = fs.readdirSync(`${__dirname}/db_bulid.sql`).toString();
-
-dbConnection.query(sql, (err, res) => {
-  if (err) throw err;
-  console.log('database created');
+dbConnection.query(sql, (err, result) => {
+  if (err) throw new Error('Erorr buildingdataBase');
+  console.log('dataBase have been built', result);
 });
