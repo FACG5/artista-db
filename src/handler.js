@@ -5,7 +5,7 @@ const queryString = require('querystring');
 
 const { getPainting, getPainters } = require('./queries/getData');
 const addPaintings = require('./queries/addData');
-
+const deleteData = require('./queries/deleteData');
 
 // to do delete categories
 // handle delete paindgi
@@ -146,9 +146,16 @@ function handleQuery(req, res) {
     res.end('sory we dont have that json');
   }
 }
-
+function handleDelete(req, res) {
+  const id = req.url.split('?')[1];
+  deleteData(id, (err, result) => {
+    res.end('err');
+  });
+  res.end('done');
+}
 
 module.exports = {
+  handleDelete,
   handleHomePage,
   handlePainters,
   handleAddPainting,
