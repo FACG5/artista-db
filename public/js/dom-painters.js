@@ -1,6 +1,6 @@
 const Container = document.getElementById("Container");
 
-fetch(null, "GET", '/getData?data=painters', buildPaintersDom)
+fetch(null, "GET", '/getdata?data=painters', buildPaintersDom)
 
 function buildPaintersDom(errfetch, data) {
   if (errfetch) conole.log("error in fetch");
