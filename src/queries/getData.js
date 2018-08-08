@@ -1,6 +1,6 @@
 const dbConnection = require('../database/db_connections.js');
 
-const getPaintings = (cb) => {
+const getPainting = (cb) => {
   dbConnection.query('SELECT paint.paint_name, paint.img, paint.paint_description, painters.painter_name, cat.cat_name FROM paintings As paint join painters on painters.painter_id = paint.painter_id join categories AS cat on cat.cat_id = paint.cat_id;' , (err, res) =>{
     if (err){
       cb (err);
@@ -32,7 +32,7 @@ const getCategories = (cb) =>{
 };
 
 module.exports = {
-  getPaintings,
+  getPainting,
   getPainters,
   getCategories
 }
