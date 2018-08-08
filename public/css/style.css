@@ -127,10 +127,10 @@ hr{
 	cursor: pointer;
 	right: 0;
 	color:rgb(207, 48, 32);
-	transition: all 0.5;
+	transition: all 1;
 }
 .view .fa-trash:hover{
-	font-size: 32px;
+	font-size: 35px;
 	position: absolute;
 	bottom:20;
 	display: block;
@@ -154,12 +154,7 @@ footer span{
 	color: rgb(207, 48, 32);
 	text-transform: capitalize;
 }
-.add-section a{
-	border:2px solid rgb(207, 48, 32);
-	padding: 7px 30px;
+.add-section a:hover{
+	color: rgb(190, 67, 56);
 }
-/*.add-section a:hover{
-	background:rgb(207, 48, 32);
-	padding: 7px 30px;
-	color: #fff;
-} */
+
