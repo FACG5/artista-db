@@ -1,7 +1,17 @@
 BEGIN;
 
-DROP TABLE IF EXISTS painters CASCADE;
-DROP TABLE IF EXISTS paintings CASCADE;
+DROP TABLE IF EXISTS categories, painters, paintings CASCADE;
+
+CREATE TABLE categories (
+    cat_id SERIAL PRIMARY KEY,
+    cat_name VARCHAR(100) NOT NULL ,
+    cat_description TEXT 
+);
+
+INSERT INTO categories (cat_name, cat_description) VALUES 
+('cat1',' cat desception'),
+('cat2',' cat desception'),
+('cat3',' cat desception');
 
 CREATE TABLE painters (
     painter_id SERIAL PRIMARY KEY,

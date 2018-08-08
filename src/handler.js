@@ -51,7 +51,7 @@ function handlePainters(req, res) {
 }
 
 function handleAddPainting(req, res) {
-  fs.readFile(path.join(__dirname, '..', 'public', 'html', 'painters.html'), (err, data) => {
+  fs.readFile(path.join(__dirname, '..', 'public', 'html', 'adding.html'), (err, data) => {
     if (err) {
       res.end(JSON.stringify(err));
     }
