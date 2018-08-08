@@ -1,5 +1,4 @@
 *{
-	background:#fff;
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
@@ -46,30 +45,34 @@ main .view{
 	display:none;
 }
 /* when hover on services link, the dropdown menu appear */
-.services:hover .dropdown{
+.view-section:hover .dropdown{
 	display:block;
 }
 /*dropdown menu design*/
 .services .dropdown{
 	position:absolute;
-	top:10px;
+	top:25px;
 	left:-10px;
-	background-color: rgb(238, 238, 238);	
-	width:130px;
+	background-color: rgba(212, 144, 144, 0.3);	
+	min-width:150px;
+	min-height: 200px;
+	border:1px solid red;
+	padding-top: 20px;
 }
 .services .dropdown .ili{
 	width:100%;
 	text-indent: 5px;
+	padding: 10px 5px;
 	transition: text-indent 0.5s ease; /*nice hover*/
 }
 .services .dropdown li:hover{
-	background-color: #0072C6;
+	background-color: ;
 	text-indent: 10px;
 }
 .services .dropdown li:hover a{
-	color: #FFF;
+	color: #;
 }
 .services .dropdown a{
-	color:  #0072C6;
+	color:  ;
 	display: inline-block;
 }

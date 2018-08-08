@@ -59,9 +59,9 @@ function handleAddPainting(req, res) {
   });
 }
 
-function handleError(req, res) {
+function handlePageNotFound(req, res) {
   res.writeHead(404, { 'content-type': 'text/html' });
-  fs.readFile(path.join(__dirname, '..', 'public', 'error.html'), (err, data) => {
+  fs.readFile(path.join(__dirname, '..', 'public', 'error404.html'), (err, data) => {
     if (err) {
       res.end(JSON.stringify(err));
     }
@@ -120,5 +120,5 @@ function handleQuery(req, res) {
 
 
 module.exports = {
-  handleHomePage, handlePainters, handleAddPainting, handleError, handleStaticFiles, handleQuery,
+  handleHomePage, handlePainters, handleAddPainting, handlePageNotFound, handleStaticFiles, handleQuery,
 };
