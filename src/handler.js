@@ -78,7 +78,8 @@ const handleQueryCb = (err, data) => (cb) => {
 };
 
 function handleQuery(req, res) {
-	const { query } = url.parse(req.url, true);
+  const { query } = url.parse(req.url, true);
+  console.log(query);
   /*
   if (query.data === 'painters') {
     getPainting(handleQueryCb(x=>console.log(x)));
@@ -105,6 +106,12 @@ function handleQuery(req, res) {
       };
       res.end(JSON.stringify(obj));
     });
+  } else if (Object.keys(query).length === 0) {
+    const obj = {
+      key: 'data',
+      value: ['painting', 'painters'],
+    };
+    res.end(JSON.stringify(obj));
   } else {
     // change this to json
     res.end('sory we dont have that json');
