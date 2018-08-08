@@ -1,0 +1,168 @@
+@media (max-width: 601px){
+
+    header{
+        display: flex;
+        justify-content:space-between;
+        height: 80px;
+        border-bottom: 3px solid rgb(207, 48, 32);
+        padding: 50px 20px 0px 20px;
+        font-family: 'Playfair Display', serif;
+    }
+    header .logo-section img{
+        width:150px;
+    }
+    header a{
+        font-weight: bold;
+        height: 3;
+        letter-spacing: 2px;
+        font-size:15px;
+        text-transform: capitalize;
+    }
+    main{
+        margin-top: 5%;
+    }
+    main .view{
+        width: 60%;
+        padding: 10px;
+        margin: 0 auto;
+    }
+    /* drop down*/
+    .mainul .services{
+        position:relative;
+    }
+    /*by default drop down menu is hidden*/
+    .services .dropdown{
+        display:none;
+    }
+    /* when hover on services link, the dropdown menu appear */
+    .view-section:hover .dropdown{
+        display:block;
+    }
+    .services span{
+        margin-left: 10px;
+    }
+    /*dropdown menu design*/
+    .services .dropdown{
+        position:absolute;
+        top:25px;
+        left:-10px;
+        background-color: rgba(212, 144, 144, 0.3);	
+        min-width:150px;
+        min-height: 150px;
+        border:1px solid #cc2f21;
+        padding-top: 20px;
+    }
+    .services .dropdown .ili{
+        width:100%;
+        text-indent: 5px;
+        padding: 10px 5px;
+        transition: text-indent 0.5s ease;
+    }
+    .services .dropdown li:hover{
+        background-color: #cc2f21;
+        text-indent: 10px;
+        color: #000;
+    }
+    .services .dropdown li:hover a{
+        color: #000;
+    }
+    .services .dropdown a{
+        color:  #000;
+        display: inline-block;
+    }
+    .view .img{
+        width: 220px;
+        height: 250px;
+        /* border: 1px solid rgb(207, 48, 32); */
+        padding: 5px;
+        margin: 10px 0px;
+        box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+    }
+    #Container , .content{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 5%;
+    }
+    .view{
+        min-height: 400px;
+        width: 80%;
+        margin: 0px auto;
+        position: relative;
+        text-align: center;
+        padding: 10px;
+    }
+    hr{
+        width: 50%;
+        border: 1px solid rgb(207, 48, 32);
+        margin: 10px auto 10px auto;
+    }
+    .view .title{
+        text-transform: capitalize;
+        letter-spacing: 2px;
+        line-height:2;
+        font-family: 'Playfair Display', serif;
+    }
+    .view .owner{
+        text-transform: capitalize;
+        letter-spacing:1px;
+        line-height:2;
+        font-family: 'Playfair Display', serif;
+    }
+    .view .fa-trash{
+        font-size: 30px;
+        position: absolute;
+        bottom:50;
+        display: block;
+        cursor: pointer;
+        right: 0;
+        color:rgb(207, 48, 32);
+        transition: all 1;
+    }
+    .view .fa-trash:hover{
+        font-size: 35px;
+        position: absolute;
+        bottom:20;
+        display: block;
+        cursor: pointer;
+        right: 0;
+        color:rgb(207, 48, 32);
+    }
+    .view .desc{
+        font-size:15px;
+        text-align: left;
+        line-height:1.5;
+    }
+    footer{
+        min-height: 80px;
+        text-align: center;
+        letter-spacing: 3px;
+        padding-top: 30px;
+        margin-top: 10%;
+    }
+    footer span{
+        color: rgb(207, 48, 32);
+        text-transform: capitalize;
+    }
+    .add-section a:hover{
+        color: rgb(190, 67, 56);
+    }
+    
+    
+}
+@media screen and (max-width: 900px) and (min-width: 601px){
+body {
+    background: yellow;
+}
+}
+@media screen and (max-width: 1100px) and (min-width: 901px){
+    body {
+        margin: 15px;
+        background: green;
+    }
+}
+@media (min-width:1101px){
+    body {
+        margin: 15px;
+        background: gray;
+}
+}
