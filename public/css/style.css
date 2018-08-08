@@ -1,3 +1,52 @@
 *{
-    background: rgb(224, 159, 159);
+    background:#fff;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+/*   G E N E R A L    ----    S T Y L E   */
+header{
+    display: flex;
+    justify-content:center;
+}
+
+/* drop down*/
+.mainul .services{
+	position:relative;
+}
+/*by default drop down menu is hidden*/
+.services .dropdown{
+	display:none;
+}
+/* when hover on services link, the dropdown menu appear */
+.services:hover .dropdown{
+	display:block;
+}
+/*dropdown menu design*/
+.services .dropdown{
+	position:absolute;
+	top:10px;
+	left:-10px;
+	background-color: rgb(238, 238, 238);	
+	width:130px;
+}
+.services .dropdown .ili{
+	width:100%;
+	text-indent: 5px;
+	transition: text-indent 0.5s ease; /*nice hover*/
+}
+.services .dropdown li:hover{
+	background-color: #0072C6;
+	text-indent: 10px;
+}
+.services .dropdown li:hover a{
+	color: #FFF;
+}
+.services .dropdown a{
+	color:  #0072C6;
+	display: inline-block;
 }

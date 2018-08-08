@@ -14,7 +14,7 @@ INSERT INTO categories (cat_name, cat_description) VALUES
 ('cat2',' cat desception'),
 ('cat3',' cat desception');
 
-CREATE TABLE Painters (
+CREATE TABLE painters (
     painter_id SERIAL PRIMARY KEY,
     painter_name VARCHAR(100) NOT NULL,
     img VARCHAR ,
