@@ -1,12 +1,20 @@
 const fs = require('fs');
 const path = require('path');
+const queryString = require('querystring');
+const getPainters = require('./queries/getPainters.js');
+const postPainting = require('./queries/postPainting.js');
+
+function serverError(req, res) {
+  res.writeHead(500, 'content-type:text/html');
+  res.end('<h1>internal server error</h1>');
+}
 
 function handleHomePage(req, res) {
-  res.writeHead(200, { 'content-type': 'text/html' });
   fs.readFile(path.join(__dirname, '..', 'public', 'index.html'), (err, data) => {
     if (err) {
-      res.end(err.message);
+      serverError(req, res);
     }
+    res.writeHead(200, { 'content-type': 'text/html' });
     res.end(data);
   });
 }
@@ -47,20 +55,47 @@ function handelNotFoundPage(req, res) {
 
 
 function handlePainters(req, res) {
-  fs.readFile(path.join(__dirname, '..', 'public', '', 'index.html'), (err, data) => {
+  // fs.readFile(path.join(__dirname, '..', 'public', '', 'index.html'), (err, data) => {
+  //   if (err) {
+  //     res.end(err.message);
+  //   }
+  //   res.end(data);
+  // });
+  getPainters((err, response) => {
     if (err) {
-      res.end(err.message);
+      serverError(req, res);
+    } else {
+      const result = JSON.stringify(response);
+      res.writeHead(200, { 'content-type': 'application/json' });
+      res.end(result);
     }
-    res.end(data);
   });
 }
 
 function handleAddPainting(req, res) {
-  fs.readFile(path(''), (err, data) => {
-    res.end(data);
-  });
+  // let data = '';
+  // req.on('data', function (chunk){
+  //   data += cheunk;
+  // });
+  // req.on('end', () => {
+  //   const paint_name = queryString.parse(data).paint_name;
+  //   const paint_description = queryString.parse(data).paint_description;
+  //   const img_url = queryString.parse(data).img_url;
+  //   postPainting(paint_name, paint_description, img_url, (err, res)) => {
+  //     if (err) {
+  //       serverError(req, res);
+  //     }
+  //   }
+  // });
+  
 }
 
+
 module.exports = {
-  handleHomePage, handlePainters, handleAddPainting, handelNotFoundPage, handleStaticFiles,
+  handleHomePage,
+  handlePainters,
+  handleAddPainting,
+  handelNotFoundPage,
+  handleStaticFiles,
+  serverError,
 };
