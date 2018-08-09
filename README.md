@@ -36,14 +36,11 @@ ___
     * adding.css
     * error404.css
     * media.css
-    * painters.css
-    * paintings.css
   * img
   * js
     * dom-index.js
     * dom-adding.js
     * dom-painters.js
-    * dom-painintings.js
     * fetch
   * index.html
   * error404.html
