@@ -67,7 +67,7 @@ ___
 ---------
 ## Database Schema
 
-![ALt](https://files.gitter.im/SalwaMugh/ubVn/schema.png)
+![ALt](https://files.gitter.im/SalwaMugh/y2G3/schema.png)
 ---------
 
 ## **How to use**
