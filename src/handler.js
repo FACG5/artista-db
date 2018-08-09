@@ -1,11 +1,20 @@
 const fs = require('fs');
 const path = require('path');
-const url = require('url');
 const queryString = require('querystring');
 
 const { getPainting, getPainters } = require('./queries/getData');
 const addPaintings = require('./queries/addData');
 const deleteData = require('./queries/deleteData');
+
+function handlePageNotFound(req, res) {
+  fs.readFile(path.join(__dirname, '..', 'public', 'error404.html'), (err, data) => {
+    res.writeHead(404, { 'content-type': 'text/html' });
+    if (err) {
+      res.end(JSON.stringify(err));
+    }
+    res.end(data);
+  });
+}
 
 function handleHomePage(req, res) {
   fs.readFile(path.join(__dirname, '..', 'public', 'index.html'), (err, data) => {
@@ -30,6 +39,11 @@ function handleStaticFiles(req, res) {
     gif: 'image/gif',
     jpeg: 'image/jpeg',
   };
+  const type = contentType[extention];
+  if (!type) {
+    handlePageNotFound(req, res);
+    return;
+  }
   res.writeHead(200, {
     'content-type': contentType[extention],
   });
@@ -67,10 +81,7 @@ function handleAdd(req, res) {
   });
   req.on('end', () => {
     const obj = queryString.parse(data);
-    console.log(obj);
-    res.writeHead(302, { Location: '/' });
-    // console.log(result);
-    addPaintings(obj, (err, resDatabase) => {
+    addPaintings(obj, (err) => {
       if (err) {
         res.writeHead(200, { Location: '/handleAddPainting' });
         res.end();
@@ -81,18 +92,8 @@ function handleAdd(req, res) {
   });
 }
 
-function handlePageNotFound(req, res) {
-  res.writeHead(404, { 'content-type': 'text/html' });
-  fs.readFile(path.join(__dirname, '..', 'public', 'error404.html'), (err, data) => {
-    if (err) {
-      res.end(JSON.stringify(err));
-    }
-    res.end(data);
-  });
-}
-
 function handleQuery(req, res) {
-  const { query } = url.parse(req.url, true);
+  const query = queryString.parse(req.url.split('?')[1]);
   if (query.data === 'painters') {
     getPainters((err, data) => {
       const obj = {
@@ -109,24 +110,20 @@ function handleQuery(req, res) {
       };
       res.end(JSON.stringify(obj));
     });
-  } else if (Object.keys(query).length === 0) {
+  } else {
     const obj = {
       key: 'data',
       value: ['painting', 'painters'],
     };
     res.end(JSON.stringify(obj));
-  } else {
-    // change this to json
-    res.end('sory we dont have that json');
   }
 }
 
 function handleDelete(req, res) {
   const id = req.url.split('?')[1];
-  deleteData(id, (err, result) => {
-    res.end('err');
+  deleteData(id, () => {
+    res.end();
   });
-  res.end('done');
 }
 
 module.exports = {

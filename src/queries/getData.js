@@ -1,7 +1,7 @@
 const dbConnection = require('../database/db_connections.js');
 
 const getPainting = (cb) => {
-  dbConnection.query('SELECT paint.paint_id, paint.paint_name, paint.img, paint.paint_description, painters.painter_name FROM paintings As paint join painters on painters.painter_id = paint.painter_id;', (err, res) => {
+  dbConnection.query('SELECT paint.paint_id, paint.paint_name, paint.img, paint.paint_description, painters.painter_name FROM paintings As paint join painters ON painters.painter_id = paint.painter_id;', (err, res) => {
     if (err) {
       cb(err);
     } else {
@@ -11,7 +11,7 @@ const getPainting = (cb) => {
 };
 
 const getPainters = (cb) => {
-  dbConnection.query('select * from painters;', (err, res) => {
+  dbConnection.query('SELECT * FROM painters;', (err, res) => {
     if (err) {
       cb(err);
     } else {
